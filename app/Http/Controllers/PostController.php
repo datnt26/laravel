@@ -7,8 +7,8 @@ use Log;
 
 class PostController extends Controller {
     public function index() {
-        $posts = Post::all();
-        Log::info($posts);
+        $posts = Post::find(1);
+        //Log::info($posts);
         return view('posts.index', array('posts' => $posts));
     }
 }
