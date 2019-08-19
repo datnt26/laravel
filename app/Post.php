@@ -2,7 +2,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Log;
 class Post extends Model
 {
 	/**
@@ -19,19 +19,19 @@ class Post extends Model
 	*/
     protected $guarded = [];
 
-    /**
+    /** [Table Names]
      *  Thiết lập bảng trong CSDL để Model liên kết đến
      * 	    protected $table = 'my_posts';
      */
 
-    /**
+    /** [Primary Keys]
      *  Thay đổi khóa chính của bảng
      *      protected $primaryKey = 'id_post';
      *      $incrementing = false // thiết lập khóa chính ko tự động tăng
      *      $keyType = 'string' // thiết lập kiểu dữ liệu của khóa chính
      */
 
-    /**
+    /** [Default Attribute Values]
     *   Set giá trị mặc định cho 1 cột trong db nếu đối tượng cần lưu ko có trường này
     *   Đầy đủ : {make:Honda,model:128,note:Đây là mẫu xe mới nhất} | {make:Honda,model:128} thiếu trường note sẽ nhận giá trị mặc định => {make:Honda,model:128,note:xxx}
     *       protected $attributes = [
@@ -39,5 +39,15 @@ class Post extends Model
     *       ];
     *
     */
+
+    /**
+    *   Giống nhau: all() và get() Cả 2 đều cho kết quả giống nhau đều là lấy toàn bộ các dữ liệu trong bảng. 
+    *   Khác nhau: get() có thể sử dụng thêm các câu truy vấn khác của Query Builder như là điều kiện để lọc kết quả
+    *
+    */
+
+    
+
+    //$freshFlight = $flight->fresh();
     
 }
