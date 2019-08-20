@@ -56,6 +56,8 @@ class PostController extends Controller {
 
 			// Local scope
 			dump(Post::userIdFilter()->get()->toArray());
+			// Local scope động
+			dump(Post::userIdFilter(3)->get()->toArray()); // tìm những post có user id là 3
 		*/
 
     	$conditions = array();
