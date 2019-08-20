@@ -10,18 +10,38 @@ class PostController extends Controller {
     public function index() {
 	    /*	Refreshing Models
 
-	    	$flight = Post::where('code', 4)->first();
-	    	$flight->code = 100;
+	    	$post = Post::where('code', 4)->first();
+	    	$post->code = 100;
 
 	    	// fresh function
-	    	$newFlight = $flight->fresh();
-			dump($flight); code = 100
-			dump($newFlight); code = 4
+	    	$newPost = $post->fresh();
+			dump($post); code = 100
+			dump($newPost); code = 4
 
 			// fresh function
-	    	$newFlight = $flight->refresh();
-			dump($flight); code = 4
-			dump($newFlight); code = 4
+	    	$newPost = $post->refresh();
+			dump($post); code = 4
+			dump($newPost); code = 4
+		*/
+
+		/*  Collections
+			Collection cung cấp các hàm hữu ích cho phép làm việc với các kết quả Eloquent:
+
+			$posts = Post::all();
+			$posts = $posts->reject(function ($post) {
+			    return $post->code === 4; // loại bỏ các post có code là 4
+			});
+			dump($posts);
+		*/
+			
+		/*
+			Chunking Results : giống limit nhưng lấy ra liên tục đến lúc hết
+			Post::chunk(200, function ($posts) { // mỗi lần lấy ra có 200 post
+				dump(count($posts));
+			    // foreach ($posts as $post) {
+			    //     dump($post);
+			    // }
+			});
 		*/
 
     	$conditions = array();
