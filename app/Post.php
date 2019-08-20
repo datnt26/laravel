@@ -61,11 +61,15 @@ class Post extends Model
     *           $builder->where('code', '=', 2);
     *       });
     *   }
+    *
     *   // local scope
     *   public function scopeUserIdFilter($query) {
     *       return $query->where('user_id', 2);
     *   }
+    *   // local scope động
+    *   public function scopeUserIdFilter($query, $value) {
+    *       return $query->where('user_id', $value);
+    *   }
     *
     */
-
 }
