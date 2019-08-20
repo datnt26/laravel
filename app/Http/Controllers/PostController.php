@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Scopes\CodeScope;
 use Log;
 
 class PostController extends Controller {
@@ -24,9 +25,8 @@ class PostController extends Controller {
 			dump($newPost); code = 4
 		*/
 
-		/*  Collections
-			Collection cung cấp các hàm hữu ích cho phép làm việc với các kết quả Eloquent:
-
+		/*  Collections : cung cấp các hàm hữu ích cho phép làm việc với các kết quả Eloquent:
+			
 			$posts = Post::all();
 			$posts = $posts->reject(function ($post) {
 			    return $post->code === 4; // loại bỏ các post có code là 4
@@ -34,8 +34,8 @@ class PostController extends Controller {
 			dump($posts);
 		*/
 			
-		/*
-			Chunking Results : giống limit nhưng lấy ra liên tục đến lúc hết
+		/*	Chunking Results : giống limit nhưng lấy ra liên tục đến lúc hết
+			
 			Post::chunk(200, function ($posts) { // mỗi lần lấy ra có 200 post
 				dump(count($posts));
 			    // foreach ($posts as $post) {
@@ -44,11 +44,17 @@ class PostController extends Controller {
 			});
 		*/
 
+		/*	Global scope : cho phép thêm các constraint vào tất cả các truy vấn cho một model
+		
+			$posts = Post::all(); 
+			$posts = Post::withoutGlobalScopes([CodeScope::class])->get(); // không dùng CodeScope
+		*/
+
     	$conditions = array();
     	$conditions['user_id'] = 2;
     	$conditions['code'] = 4;
         $posts = Post::where($conditions)->get();
-        //Log::info($posts);
+		
         return view('posts.index', array('posts' => $posts));
     }
 }
