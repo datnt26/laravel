@@ -3,6 +3,7 @@ namespace App;
 
 use App\Scopes\CodeScope;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class Post extends Model
 {
@@ -47,13 +48,17 @@ class Post extends Model
     *
     */
 
-    /** [Global scope] 
+    /** [Query Scopes] 
     *   -> cho phép thêm các constraint vào tất cả các truy vấn cho một model
     *
     *   protected static function boot() {
     *       parent::boot();
-    *
+    *       // global scope
     *       static::addGlobalScope(new CodeScope);
+    *       // global scope vô danh
+    *       static::addGlobalScope('CodeScopeAnonymous', function(Builder $builder) {
+    *           $builder->where('code', '=', 2);
+    *       });
     *   }
     */
 }
