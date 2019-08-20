@@ -1,8 +1,9 @@
 <?php
 namespace App;
 
+use App\Scopes\CodeScope;
 use Illuminate\Database\Eloquent\Model;
-use Log;
+
 class Post extends Model
 {
 	/**
@@ -46,8 +47,13 @@ class Post extends Model
     *
     */
 
-    
-
-    //$freshFlight = $flight->fresh();
-    
+    /** [Global scope] 
+    *   -> cho phép thêm các constraint vào tất cả các truy vấn cho một model
+    *
+    *   protected static function boot() {
+    *       parent::boot();
+    *
+    *       static::addGlobalScope(new CodeScope);
+    *   }
+    */
 }
