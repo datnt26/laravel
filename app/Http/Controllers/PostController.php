@@ -44,10 +44,15 @@ class PostController extends Controller {
 			});
 		*/
 
-		/*	Global scope : cho phép thêm các constraint vào tất cả các truy vấn cho một model
-		
+		/*	Query Scopes : cho phép thêm các constraint vào tất cả các truy vấn cho một model
+
+			// Global scope
 			$posts = Post::all(); 
 			$posts = Post::withoutGlobalScopes([CodeScope::class])->get(); // không dùng CodeScope
+
+			// Global scope vô danh
+			dump(Post::all()->toArray());
+			dump(Post::withoutGlobalScope('CodeScopeAnonymous')->get()->toArray());	 // không dùng global scope vô danh CodeScopeAnonymous
 		*/
 
     	$conditions = array();
