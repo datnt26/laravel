@@ -53,6 +53,9 @@ class PostController extends Controller {
 			// Global scope vô danh
 			dump(Post::all()->toArray());
 			dump(Post::withoutGlobalScope('CodeScopeAnonymous')->get()->toArray());	 // không dùng global scope vô danh CodeScopeAnonymous
+
+			// Local scope
+			dump(Post::userIdFilter()->get()->toArray());
 		*/
 
     	$conditions = array();
