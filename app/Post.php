@@ -51,6 +51,7 @@ class Post extends Model
     /** [Query Scopes] 
     *   -> cho phép thêm các constraint vào tất cả các truy vấn cho một model
     *
+    *   // global scope
     *   protected static function boot() {
     *       parent::boot();
     *       // global scope
@@ -60,5 +61,11 @@ class Post extends Model
     *           $builder->where('code', '=', 2);
     *       });
     *   }
+    *   // local scope
+    *   public function scopeUserIdFilter($query) {
+    *       return $query->where('user_id', 2);
+    *   }
+    *
     */
+
 }
