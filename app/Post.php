@@ -72,4 +72,15 @@ class Post extends Model
     *   }
     *
     */
+
+    /** Events
+    *   -> dùng để bắt các sự kiện khi các hàm trong model được gọi
+    *
+    *   protected static function boot() {
+    *       parent::boot();
+    *       static::retrieved (function ($model) { // được gọi sau khi find xong
+    *           $model->code = '11020071';
+    *       });
+    *   }
+    */
 }
