@@ -83,4 +83,14 @@ class Post extends Model
     *       });
     *   }
     */
+
+    /** Relationships
+    *
+    *   public function comments() {
+    *       return $this->hasMany('App\Comment','postId');
+    *   }
+    *   public function user() {
+    *       return $this->belongsTo('App\User','user_id');
+    *   }
+    */
 }
