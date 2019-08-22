@@ -60,7 +60,8 @@ class PostController extends Controller {
 			dump(Post::userIdFilter(3)->get()->toArray()); // tìm những post có user id là 3
 		*/
 			
-		/*
+		/*  Relationships
+		
 			foreach(Post::with(['comments','user'])->get() as $value) {
 				dump($value->toArray());
 			}
