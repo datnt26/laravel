@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 use App\Post;
 use App\Scopes\CodeScope;
 use Log;
@@ -76,12 +77,24 @@ class PostController extends Controller {
 			[Querying Relationship Existence] : chỉ lấy ra các bản ghi mà model được liên kết đến tồn tại giá trị tương ứng
 			dump(Post::has('comments')->get()); // chỉ lấy ra những post có chứa comment
 			dump(Post::with('comments')->has('comments', '>=', 3)->get()); // chỉ lấy ra những post có từ 3 comment trở lên
-			Post::has('comments.like')->get(); // điều kiện has lồng nhau sử dụng dấu . // chỉ lấy ra những post có cả like và comment
-			Post::whereHas('comments', function ($query) { // sử dụng whereHas hoặc orWhereHas để thêm điều kiện cho query của model được liên kết đến
-			   	$query->where('content', 'like', 'foo%');
+			// điều kiện has lồng nhau sử dụng dấu . để ngăn cách
+			Post::has('comments.like')->get(); // chỉ lấy ra những post mà comment ấy có ít nhất 1 like
+			// sử dụng whereHas hoặc orWhereHas để thêm điều kiện cho query của model được liên kết đến
+			Post::whereHas('comments', function ($query) {
+			   		$query->where('message', 'like', '%United%'); // chỉ lấy ra post nào có comment mà nội dung comment có chứa từ United
+			})->get();
+
+			[Querying Relationship Absence] : lấy ra các bản ghi mà model được liên kết đến không tồn tại giá trị tương ứng
+			dump(Post::with('comments')->doesntHave('comments')->get()); // lấy ra những post không chứa comment
+			// sử dụng whereDoesntHave để thêm điều kiện cho query của model được liên kết đến
+			$posts = Post::whereDoesntHave('comments', function ($query) {
+			    $query->where('message', 'like', '%United%'); // // chỉ lấy ra post nào có comment mà nội dung comment không chứa từ United
+			})->get();
+			// Điều kiện whereDoesntHave lồng nhau sử dụng dấu . để ngăn cách
+			Post::with('comments')->whereDoesntHave('comments.user', function ($query) {
+			    $query->where('banned', 1); // // chỉ lấy ra post nào có comment mà comment ấy là của 1 tài khoản ko bị banned
 			})->get();
 		*/
-			
 
     	$conditions = array();
     	$conditions['user_id'] = 2;
