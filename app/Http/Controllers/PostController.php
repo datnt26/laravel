@@ -78,7 +78,7 @@ class PostController extends Controller {
 			dump(Post::has('comments')->get()); // chỉ lấy ra những post có chứa comment
 			dump(Post::with('comments')->has('comments', '>=', 3)->get()); // chỉ lấy ra những post có từ 3 comment trở lên
 			// điều kiện has lồng nhau sử dụng dấu . để ngăn cách
-			Post::has('comments.like')->get(); // chỉ lấy ra những post mà comment ấy có ít nhất 1 like
+			Post::has('comments.like')->get(); // chỉ lấy ra những post mà post ấy có cả comment và like 
 			// sử dụng whereHas hoặc orWhereHas để thêm điều kiện cho query của model được liên kết đến
 			Post::whereHas('comments', function ($query) {
 			   		$query->where('message', 'like', '%United%'); // chỉ lấy ra post nào có comment mà nội dung comment có chứa từ United
@@ -94,6 +94,21 @@ class PostController extends Controller {
 			Post::with('comments')->whereDoesntHave('comments.user', function ($query) {
 			    $query->where('banned', 1); // // chỉ lấy ra post nào có comment mà comment ấy là của 1 tài khoản ko bị banned
 			})->get();
+
+			[Counting Related Models] đếm số bản ghi của model được liên kết đến | 1 trường {relation}_count sẽ được thêm vào kết quả
+			dump(Post::withCount('comments')->get()); // trường comments_count sẽ được thêm vào attributes post
+			// đếm bản ghi của model liên kết kèm điều kiện
+			$posts = Post::withCount(['likes', 'comments' => function (Builder $query) {
+			    $query->where('message', 'like', '%United%'); // đếm tổng số like của post | đếm tổng số comment của post mà nội dung comment chứa từ United
+			}])->get();
+			// tạo trường ảo
+			$posts = Post::withCount([
+			    'comments',
+			    'comments as pending_comments_count' => function (Builder $query) { // lấy ra tổng số comment của post đang chờ phê duyệt
+			        $query->where('approved', false);
+			    }
+			])->get();
+
 		*/
 
     	$conditions = array();
