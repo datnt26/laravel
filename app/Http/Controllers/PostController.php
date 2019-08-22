@@ -111,6 +111,15 @@ class PostController extends Controller {
 
 		*/
 
+		/*  Eager Loading
+			// Eager Loading lồng nhau dùng dấu . để ngăn cách
+			dump(Post::with('comments.user')->get()); // lấy ra tất cả comment của post kèm theo thông tin user của comment ấy
+			// Eager Loading Specific Columns | tham số đầu id,tham số cuối khóa ngoại của liên kết (buộc phải có)
+			dump(Post::with('comments:id,message,userId,postId')->get()); // lấy ra tất cả comment của post trong đó chỉ lấy ra trường message,userId của comment
+		*/
+		
+		
+
     	$conditions = array();
     	$conditions['user_id'] = 2;
     	$conditions['code'] = 4;

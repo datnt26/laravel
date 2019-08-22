@@ -94,10 +94,16 @@ class Post extends Model
     *   }
     *
     *   // Dynamic Properties 
-    *   Các thuộc tính động là "lazy loading",chúng sẽ chỉ load dữ liệu quan hệ khi các thuộc tính (các model liên kết đến) này được gọi
+    *   -> Các thuộc tính động là "lazy loading",chúng sẽ chỉ load dữ liệu quan hệ khi các thuộc tính (các model liên kết đến) này được gọi
     *   $user = App\User::find(1);
     *   foreach ($user->posts as $post) { // đến đây dữ liệu về post của user mới được load
     *
     *   }
+    *
+    *   // Eager Loading
+    *   -> Trong Eloquent relationship mỗi model được liên kết đến được coi như là các thuộc tính,các dữ liệu này là "lazy loaded".
+        Các dữ liệu này chỉ được load khi các thuộc tính tính này được gọi đến.
+        Eager loading giải quyết truy vấn N + 1 (câu lệnh with Post::with('comments'))
+        (Cần lấy 25 post kèm comment,lần 1 lấy 25 post,tiếp theo lấy tất cả comment tương ứng với mỗi post ấy(cần 25 truy vấn) => tổng là 1 + 25 = 26 truy vấn)
     */
 }
