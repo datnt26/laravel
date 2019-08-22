@@ -92,5 +92,12 @@ class Post extends Model
     *   public function user() {
     *       return $this->belongsTo('App\User','user_id');
     *   }
+    *
+    *   // Dynamic Properties 
+    *   Các thuộc tính động là "lazy loading",chúng sẽ chỉ load dữ liệu quan hệ khi các thuộc tính (các model liên kết đến) này được gọi
+    *   $user = App\User::find(1);
+    *   foreach ($user->posts as $post) { // đến đây dữ liệu về post của user mới được load
+    *
+    *   }
     */
 }
