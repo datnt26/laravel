@@ -65,6 +65,10 @@ class PostController extends Controller {
 			foreach(Post::with(['comments','user'])->get() as $value) {
 				dump($value->toArray());
 			}
+
+			Querying Relations : thêm điều kiện cho model liên kết
+			$p = Post::find(3);
+			dump($p->comments()->where('userId', 2)->get()); // chỉ lấy ra những comment của user có id là 2
 		*/
 
     	$conditions = array();
