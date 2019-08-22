@@ -66,9 +66,12 @@ class PostController extends Controller {
 				dump($value->toArray());
 			}
 
-			Querying Relations : thêm điều kiện cho model liên kết
+			// Querying Relations : thêm điều kiện cho model liên kết
 			$p = Post::find(3);
 			dump($p->comments()->where('userId', 2)->get()); // chỉ lấy ra những comment của user có id là 2
+			// [orWhere] : điều kiện or
+			$p = Post::find(3);
+			dump($p->comments()->where('userId', 3)->orWhere('id','>',2)->get()); // chỉ lấy ra những comment của user có id là 2
 		*/
 
     	$conditions = array();
