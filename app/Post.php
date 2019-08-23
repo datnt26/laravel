@@ -105,5 +105,15 @@ class Post extends Model
         Các dữ liệu này chỉ được load khi các thuộc tính tính này được gọi đến.
         Eager loading giải quyết truy vấn N + 1 (câu lệnh with Post::with('comments'))
         (Cần lấy 25 post kèm comment,lần 1 lấy 25 post,tiếp theo lấy tất cả comment tương ứng với mỗi post ấy(cần 25 truy vấn) => tổng là 1 + 25 = 26 truy vấn)
+        // set Eager Loading default
+        protected $with = ['comments'];
+        // Lazy Eager Loading : Hàm load('comments') | load khác với with là load model con ko tự được gọi sau khi model cha thực thi xong 
     */
+
+    public function comments() {
+        return $this->hasMany('App\Comment','postId');
+    }
+    public function user() {
+        return $this->belongsTo('App\User','user_id');
+    }
 }
