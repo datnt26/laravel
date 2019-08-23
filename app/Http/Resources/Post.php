@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Comment as CommentResource;
 
 class Post extends JsonResource
 {
@@ -15,7 +16,13 @@ class Post extends JsonResource
     public function toArray($request)
     {
         return [
-            'data' => parent::toArray($request),
+            'data' => [
+                'id' => $this->id,
+                'user_id' => $this->user_id,
+                'content' => $this->content,
+                'created' => $this->created,
+                'comments' => new CommentResource($this->comments)
+            ],
             'response' => [
                 'status' => 'success',
                 'code' => 200
