@@ -110,10 +110,11 @@ class Post extends Model
         // Lazy Eager Loading : Hàm load('comments') | load khác với with là load model con ko tự được gọi sau khi model cha thực thi xong 
     */
 
-    public function comments() {
-        return $this->hasMany('App\Comment','postId');
-    }
-    public function user() {
-        return $this->belongsTo('App\User','user_id');
-    }
+    /** Eloquent: Mutators
+    *   -> Accessors và Mutators được dùng để format lại các giá trị thuộc tính của Eloquent khi lấy ra hoặc thêm các thuộc tính vào Model
+    *
+    *
+    *
+    */
+
 }

@@ -26,7 +26,7 @@ class PostController extends Controller {
 			dump($newPost); code = 4
 		*/
 
-		/*  Collections : cung cấp các hàm hữu ích cho phép làm việc với các kết quả Eloquent:
+		/*  Collections : cung cấp các hàm thao tác với các mảng dữ liệu
 			
 			$posts = Post::all();
 			$posts = $posts->reject(function ($post) {
@@ -120,15 +120,13 @@ class PostController extends Controller {
 			dump(Post::with('comments:id,message,userId,postId')->get()); // lấy ra tất cả comment của post trong đó chỉ lấy ra trường message,userId của comment
 
 		*/
-		$tt = Post::with(['comments' => function ($query) {
-		    $query->where('message', 'like', '%United%');
-		}])->get();
-		dump($tt);
+
     	$conditions = array();
-    	$conditions['user_id'] = 2;
-    	$conditions['code'] = 4;
+    	// $conditions['user_id'] = 2;
+    	// $conditions['code'] = 4;
         $posts = Post::where($conditions)->get();
-		
-        return view('posts.index', array('posts' => $posts));
+        dump($posts->toArray());
+		return;
+        // return view('posts.index', array('posts' => $posts));
     }
 }
