@@ -120,7 +120,7 @@ class PostController extends Controller {
 			dump(Post::with('comments:id,message,userId,postId')->get()); // lấy ra tất cả comment của post trong đó chỉ lấy ra trường message,userId của comment
 
 		*/
-
+			
     	$conditions = array();
     	// $conditions['user_id'] = 2;
     	// $conditions['code'] = 4;

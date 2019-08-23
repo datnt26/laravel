@@ -115,8 +115,8 @@ class Post extends Model
     *
     *   // Accessor
     *   public function getFullAttribute() { // thêm trường full,trường này được lấy bằng cách gọi trực tiếp Post::get(1)->full; 
-    *       return 100;
-    *   }
+    *       return 100;// Muốn thêm trường này vào dữ liệu trả về dùng protected $appends = ['full'];và khi convert xang array hoặc json : Post::get()->toArray())
+    *   } 
     *
     *   // Mutator
     *   public function setPasswordAttribute($value) {
@@ -129,7 +129,5 @@ class Post extends Model
     *   ];
     *
     */
-
-
-
+    
 }
