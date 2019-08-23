@@ -11,9 +11,9 @@ use App\Post;
 
 class PostObserver
 {
-    public function retrieved(Post $post) {
-        $post->code = 11020071;
-    }
+    // public function retrieved(Post $post) {
+    //     $post->code = 11020071;
+    // }
     /**
      * Handle the post "created" event.
      *
