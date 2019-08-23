@@ -130,10 +130,10 @@ class PostController extends Controller {
         // return view('posts.index', array('posts' => $posts));
     }
 
-    /*  getPostById api
+    /*  // getPostById api
 	    public function getPostById($id) {
-		return new PostResource(Post::find($id));
-	}
+			// return new PostResource(Post::find($id));
+			return new PostResource(Post::with('comments')->find($id)); // API Resource Relationships
+		}
 	*/
-	
 }
