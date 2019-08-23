@@ -113,8 +113,23 @@ class Post extends Model
     /** Eloquent: Mutators
     *   -> Accessors và Mutators được dùng để format lại các giá trị thuộc tính của Eloquent khi lấy ra hoặc thêm các thuộc tính vào Model
     *
+    *   // Accessor
+    *   public function getFullAttribute() { // thêm trường full,trường này được lấy bằng cách gọi trực tiếp Post::get(1)->full; 
+    *       return 100;
+    *   }
     *
+    *   // Mutator
+    *   public function setPasswordAttribute($value) {
+    *       $this->attributes['password'] = Hash::make($value); // mã hóa password trước khi lưu
+    *   }
+    *
+    *   // Attribute Casting : dùng thay đổi kiểu dữ liệu của thuộc tính 
+    *   protected $casts = [
+    *       'id' => 'string',
+    *   ];
     *
     */
+
+
 
 }
