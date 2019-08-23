@@ -114,7 +114,7 @@ class Post extends Model
     *   -> Accessors và Mutators được dùng để format lại các giá trị thuộc tính của Eloquent khi lấy ra hoặc thêm các thuộc tính vào Model
     *
     *   // Accessor
-    *   public function getFullAttribute() { // thêm trường full,trường này được lấy bằng cách gọi trực tiếp Post::get(1)->full; 
+    *   public function getFullAttribute() { // thêm trường full,trường này được lấy bằng cách gọi trực tiếp Post::find(1)->full; 
     *       return 100;// Muốn thêm trường này vào dữ liệu trả về dùng protected $appends = ['full'];và khi convert xang array hoặc json : Post::get()->toArray())
     *   } 
     *
@@ -128,6 +128,13 @@ class Post extends Model
     *       'id' => 'string',
     *   ];
     *
+    */
+
+    /** Eloquent API Resources
+    *   -> dùng để chuyển đổi data từ Eloquent models sang JSON khi build API
+    *
+    *   // API Resources
+    *   php artisan make:resource Post
     */
     
 }

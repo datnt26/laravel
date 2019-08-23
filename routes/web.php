@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 Route::resource('posts', 'PostController');
 Route::resource('countries', 'CountryController');
+//Route::get('/posts/getPostById/{id}', 'PostController@getPostById');
