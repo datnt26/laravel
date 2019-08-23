@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use App\Post;
 use App\Scopes\CodeScope;
-use Log;
+use App\Http\Resources\Post as PostResource;
 
 class PostController extends Controller {
 	
@@ -120,7 +120,7 @@ class PostController extends Controller {
 			dump(Post::with('comments:id,message,userId,postId')->get()); // lấy ra tất cả comment của post trong đó chỉ lấy ra trường message,userId của comment
 
 		*/
-			
+
     	$conditions = array();
     	// $conditions['user_id'] = 2;
     	// $conditions['code'] = 4;
@@ -129,4 +129,11 @@ class PostController extends Controller {
 		return;
         // return view('posts.index', array('posts' => $posts));
     }
+
+    /*  getPostById api
+	    public function getPostById($id) {
+		return new PostResource(Post::find($id));
+	}
+	*/
+	
 }
