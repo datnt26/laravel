@@ -18,6 +18,12 @@ class Post extends JsonResource
         Conditional Attributes
         -> Đặt điều kiện cho các thuộc tính. Nếu true => thuộc tính sẽ được trả về ,ngược lại sẽ bị xóa bỏ
     */
+
+    /*
+        Conditional Relationships
+        -> Đặt điều kiện cho các thuộc tính liên kết model ($this->whenLoaded()).
+        Nếu model liên kết load thành công => thuộc tính sẽ được trả về ,ngược lại sẽ bị xóa bỏ
+    */
     public function toArray($request)
     {
         //return parent::toArray($request);
@@ -27,7 +33,7 @@ class Post extends JsonResource
                 'user_id' => $this->when($this->user_id < 3, $this->user_id), // Trường user_id được trả về nếu user_id < 3,ngược lại nó sẽ bị xóa bỏ
                 'content' => $this->content,
                 'created' => $this->created,
-                'comments' => new CommentCollection($this->comments)
+                'comments' => new CommentCollection($this->whenLoaded('comments'))
             ],
             'response' => [
                 'status' => 'success',
