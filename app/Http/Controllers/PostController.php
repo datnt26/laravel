@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use App\Post;
 use App\Scopes\CodeScope;
 use App\Http\Resources\Post as PostResource;
@@ -119,6 +120,14 @@ class PostController extends Controller {
 			// Eager Loading Specific Columns | tham số đầu id,tham số cuối khóa ngoại của liên kết (buộc phải có)
 			dump(Post::with('comments:id,message,userId,postId')->get()); // lấy ra tất cả comment của post trong đó chỉ lấy ra trường message,userId của comment
 
+		*/
+
+		/* 	Eloquent: Serialization
+
+			// Appending Values : thêm thuộc tính vào model object
+			$post = Post::where($conditions)->get()->first()
+	        dump($post->setAppends(['is_admin'])->toArray()); // Hàm setAppends chỉ có tác dụng với single record
+	        -> protected $appends = ['is_admin']; // khai báo trong Model sẽ có tác dụng với tất cả record
 		*/
 
     	$conditions = array();
