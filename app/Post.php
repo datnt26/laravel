@@ -137,8 +137,12 @@ class Post extends Model
     *   php artisan make:resource Post
     */
 
-    /** Eloquent API Resources
+    /** Eloquent: Serialization
     *   -> dùng để chuyển đổi data từ Eloquent models sang JSON hoặc Array
+    *
+    *   // Appending Values : thêm thuộc tính vào model object
+    *   public function getIsAdminAttribute() {
+    *       return true; // thêm thuộc tính is_admin trong kết quả trả về
+    *   }
     */
-    
 }
