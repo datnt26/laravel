@@ -15,19 +15,19 @@ class Post extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
-        // return [
-        //     'data' => [
-        //         'id' => $this->id,
-        //         'user_id' => $this->user_id,
-        //         'content' => $this->content,
-        //         'created' => $this->created,
-        //         'comments' => new CommentCollection($this->comments)
-        //     ],
-        //     'response' => [
-        //         'status' => 'success',
-        //         'code' => 200
-        //     ],
-        // ];
+        //return parent::toArray($request);
+        return [
+            'data' => [
+                'id' => $this->id,
+                'user_id' => $this->user_id,
+                'content' => $this->content,
+                'created' => $this->created,
+                'comments' => new CommentCollection($this->comments)
+            ],
+            'response' => [
+                'status' => 'success',
+                'code' => 200
+            ],
+        ];
     }
 }
