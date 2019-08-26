@@ -10,7 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*
+	use App\Comment;
+	use App\Http\Resources\CommentCollection;
 
+	Route::get('/comments', function () {
+	    //return new CommentCollection(Comment::all()->keyBy->message); // preserveKeys
+	    return new CommentCollection(Comment::paginate()); // Pagination
+	});
+*/
 Route::get('/', function () {
     return view('welcome');
 });
