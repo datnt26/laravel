@@ -130,16 +130,23 @@ class PostController extends Controller {
         // return view('posts.index', array('posts' => $posts));
     }
 
-	/*
-	    public function getPostById($id) {
-			// return new PostResource(Post::find($id));
-			// return new PostResource(Post::with('comments')->find($id)); // API Resource Relationships
+	
+    public function getPostById($id) {
+		// return new PostResource(Post::find($id));
+		return new PostResource(Post::with('comments')->find($id)); // API Resource Relationships
 
+		/*
 			// Top Level Meta Data | khai báo trong controller
 			return (new PostResource(Post::find($id)->load('comments')))
-	            ->additional(['meta' => [
-	                'key' => 'value',
-	            ]]);
-		}
-	*/
+										            ->additional(['meta' => [
+										                'key' => 'value',
+										            ]]);
+		*/
+		/*
+         	// Resource Responses | khai báo trong controller
+         	return (new PostResource(Post::find($id)))
+             								->response()
+             								->header('X-Value', 'True');
+		*/	
+	}
 }

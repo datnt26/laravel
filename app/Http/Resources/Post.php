@@ -14,13 +14,11 @@ class Post extends JsonResource
      * @return array
      */
 
-    /*
-        Conditional Attributes
+    /*  Conditional Attributes
         -> Đặt điều kiện cho các thuộc tính. Nếu true => thuộc tính sẽ được trả về ,ngược lại sẽ bị xóa bỏ
     */
 
-    /*
-        Conditional Relationships
+    /*  Conditional Relationships
         -> Đặt điều kiện cho các thuộc tính liên kết model ($this->whenLoaded()).
         Nếu model liên kết load thành công => thuộc tính sẽ được trả về ,ngược lại sẽ bị xóa bỏ
     */
@@ -42,18 +40,24 @@ class Post extends JsonResource
         // ];
     }
 
-    /*
-        Top Level Meta Data
+    /*  Adding Meta Data[Top Level Meta Data]
         -> Thêm thuộc tính "meta" vào resource response,thuộc tính này đồng cấp với "data" key (lớp thứ nhất)
 
         // Top Level Meta Data
-
         public function with($request) {
             return [
                 'meta' => [
                     'key' => 'value',
                 ],
             ];
+        }
+    */
+
+    /*  Resource Responses
+        -> Dùng để tùy chỉnh HTTP response
+
+        public function withResponse($request, $response) {
+            $response->header('X-Value', 'True'); // thêm trường X-Value vào header của HTTP Response
         }
     */
 }
