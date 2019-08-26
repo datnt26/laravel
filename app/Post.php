@@ -144,5 +144,11 @@ class Post extends Model
     *   public function getIsAdminAttribute() {
     *       return true; // thêm thuộc tính is_admin trong kết quả trả về
     *   }
+    *
+    *   // Hiding Attributes : ẩn các thuộc tính trong model object 
+    *   protected $hidden = ['code'];
+    *
+    *   // Danh sách các thuộc tính được hiển thị trong model object
+    *   protected $visible = ['id','user_id','content','created'];
     */
 }
