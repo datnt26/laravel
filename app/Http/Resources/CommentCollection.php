@@ -26,4 +26,9 @@ class CommentCollection extends ResourceCollection
             ],
         ];
     }
+    
+    /*
+        // Đặt collection's keys trước mỗi items (theo id hoặc các field trong mỗi item)
+        public $preserveKeys = true;
+    */
 }
