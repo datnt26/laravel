@@ -136,5 +136,9 @@ class Post extends Model
     *   // API Resources
     *   php artisan make:resource Post
     */
+
+    /** Eloquent API Resources
+    *   -> dùng để chuyển đổi data từ Eloquent models sang JSON hoặc Array
+    */
     
 }
