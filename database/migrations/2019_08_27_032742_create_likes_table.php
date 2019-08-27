@@ -19,6 +19,13 @@ use Illuminate\Database\Migrations\Migration;
 
 */
 
+/*  Migration[Rolling Back Migrations]
+
+    php artisan migrate:rollback // back lại "batch" mới nhất của bảng migrations
+    php artisan migrate:rollback --step=5 // back lại 5 "batch" mới nhất của bảng migrations
+    php artisan migrate:reset // back lại tất cả bảng migrations
+*/
+
 class CreateLikesTable extends Migration
 {
     /**
