@@ -26,6 +26,12 @@ use Illuminate\Database\Migrations\Migration;
     php artisan migrate:reset // back lại tất cả bảng migrations
 */
 
+/*  Migration[Rollback & Migrate In Single Command]
+    -> dùng để chạy update migrations 
+
+    php artisan migrate:refresh // Đầu tiên chạy lệnh migrate:reset sau đó chạy migrate
+*/
+
 class CreateLikesTable extends Migration
 {
     /**
@@ -38,6 +44,11 @@ class CreateLikesTable extends Migration
         Schema::create('likes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+        });
+
+        Schema::table('likes', function (Blueprint $table) {
+            $table->bigInteger('postId');
+            $table->bigInteger('userId');
         });
     }
 
