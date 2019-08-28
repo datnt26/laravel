@@ -25,4 +25,10 @@ class CheckAge
         }
         return $next($request);
     }
+
+    // Dùng sau khi HTTP response đã được gửi xong cho trình duyệt
+    public function terminate($request, $response)
+    {
+        // Store the session data...
+    }
 }
