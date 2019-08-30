@@ -133,7 +133,7 @@ class PostController extends Controller {
     	$conditions = array();
     	// $conditions['user_id'] = 2;
     	// $conditions['code'] = 4;
-        $posts = Post::where($conditions)->get();
+        $posts = Post::with(['user','comments.children.user','comments.user'])->where($conditions)->take(3)->get();
         dump($posts->toArray());
 		return;
         // return view('posts.index', array('posts' => $posts));
