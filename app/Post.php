@@ -151,4 +151,11 @@ class Post extends Model
     *   // Danh sách các thuộc tính được hiển thị trong model object
     *   protected $visible = ['id','user_id','content','created'];
     */
+
+    public function comments() {
+        return $this->hasMany('App\Comment','postId');
+    }
+    public function user() {
+        return $this->belongsTo('App\User','user_id');
+    }
 }
