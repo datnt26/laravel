@@ -35,3 +35,6 @@ Route::resource('posts', 'PostController');
 
 Route::resource('countries', 'CountryController');
 //Route::get('/posts/getPostById/{id}', 'PostController@getPostById');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
